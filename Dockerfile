@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y \
   php5 \
   php5-gd \
   php5-mysql \
-  --no-install-recommends
+  --no-install-recommends && rm -r /var/lib/apt/lists/*
 
 EXPOSE 80
 

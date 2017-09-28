@@ -10,6 +10,9 @@ RUN apt-get update && apt-get install -y \
   php5-mysql \
   --no-install-recommends
 
+# host 주소 변경
+RUN sed -i 's/172.17.0.2/127.0.0.1/' /etc/hosts
+
 # composer 설치
 RUN curl -sS https://getcomposer.org/installer | php \
     && mv composer.phar /usr/local/bin/ \

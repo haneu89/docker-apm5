@@ -8,18 +8,19 @@ RUN apt-get update && apt-get install -y \
   php5 \
   php5-gd \
   php5-mysql \
+  curl \
   --no-install-recommends
 
-# host 주소 변경
-RUN sed -i 's/172.17.0.2/127.0.0.1/' /etc/hosts
+RUN a2enmod rewrite
+RUN sed -i ':a;N;$!ba;s/AllowOverride None/AllowOverride All/3' /etc/apache2/apache2.conf
 
 # composer 설치
-RUN curl -sS https://getcomposer.org/installer | php \
-    && mv composer.phar /usr/local/bin/ \
-    && ln -s /usr/local/bin/composer.phar /usr/local/bin/composer
+# RUN curl -sS https://getcomposer.org/installer | php \
+#     && mv composer.phar /usr/local/bin/ \
+#     && ln -s /usr/local/bin/composer.phar /usr/local/bin/composer
 
 # apt 리스트 제거
-RUN rm -r /var/lib/apt/lists/*
+# RUN rm -r /var/lib/apt/lists/*
 
 EXPOSE 80
 

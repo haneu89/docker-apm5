@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y \
   php5 \
   php5-gd \
   php5-mysql \
+  php5-curl \
   curl \
   --no-install-recommends
 
